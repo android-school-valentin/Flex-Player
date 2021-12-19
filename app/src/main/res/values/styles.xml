@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!-- Action mode style to look like Material specs -->
+    <style name="Widget.FlexPlayer.ActionMode" parent="Widget.AppCompat.ActionMode">
+        <item name="titleTextStyle">?textAppearanceHeadline6</item>
+        <item name="subtitleTextStyle">?textAppearanceSubtitle1</item>
+        <item name="background">@color/action_mode_background</item>
+    </style>
+
+    <!-- Style for PopupMenu that overlaps the anchor and supports Night Theme. -->
+    <style name="Widget.FlexPlayer.PopupMenu.Overflow" parent="Widget.MaterialComponents.PopupMenu.Overflow" />
+
+    <!-- Default style for ListView. -->
+    <style name="Widget.FlexPlayer.ListView" parent="Widget.AppCompat.ListView">
+        <item name="android:divider">@null</item>
+        <item name="android:listSelector">@android:color/transparent</item>
+        <item name="android:nestedScrollingEnabled">true</item>
+    </style>
+
+    <!-- Default style for RecyclerView. Specify fast scroll thumb and track drawables. -->
+    <style name="Widget.FlexPlayer.RecyclerView" parent="android:Widget">
+        <item name="fastScrollHorizontalThumbDrawable">?android:fastScrollThumbDrawable</item>
+        <item name="fastScrollHorizontalTrackDrawable">?android:fastScrollTrackDrawable</item>
+        <item name="fastScrollVerticalThumbDrawable">?android:fastScrollThumbDrawable</item>
+        <item name="fastScrollVerticalTrackDrawable">?android:fastScrollTrackDrawable</item>
+    </style>
+
+    <!-- Customization of ListView's FastScroller -->
+    <style name="Widget.FlexPlayer.FastScroll" parent="android:Widget.Material.FastScroll">
+        <item name="android:minWidth">124dp</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textColor">?colorOnSecondary</item>
+    </style>
+
+    <style name="Widget.FlexPlayer.ScrollingView" parent="">
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <style name="Widget.FlexPlayer.List" parent="Widget.FlexPlayer.ScrollingView">
+        <item name="android:paddingTop">@dimen/grid_1</item>
+        <item name="android:paddingBottom">@dimen/grid_1</item>
+    </style>
+
+    <style name="Widget.FlexPlayer.Grid" parent="Widget.FlexPlayer.ScrollingView" />
+
+    <!-- Style for SeekBar that removes horizontal padding. -->
+    <style name="Widget.FlexPlayer.SeekBar.FullWidth" parent="Widget.AppCompat.SeekBar">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+    </style>
+
+    <style name="Widget.FlexPlayer.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardMaxElevation">@dimen/card_max_elevation</item>
+        <item name="cardUseCompatPadding">true</item>
+    </style>
+
+    <style name="Widget.FlexPlayer.CardView.Animated">
+        <item name="android:stateListAnimator">@animator/card_state_list</item>
+    </style>
+
+    <style name="Widget.FlexPlayer.List.Offset">
+        <item name="android:paddingBottom">72dp</item>
+    </style>
+
+    <style name="Widget.FlexPlayer.Grid.Offset">
+        <item name="android:paddingBottom">72dp</item>
+    </style>
+
+    <dimen name="card_max_elevation">8dp</dimen>
+</resources>

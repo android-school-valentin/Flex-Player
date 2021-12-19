@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/album_art"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_music_album"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="?shapeAppearanceMediumComponent" />
+
+        <SeekBar
+            android:id="@+id/seek_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:elevation="30dp"
+            android:focusable="true"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:scaleX="1.005"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/album_art" />
+
+        <!-- bookmark -->
+        <TextView
+            android:id="@+id/bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:text="0:00"
+            android:textAppearance="?textAppearanceOverline"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seek_bar" />
+
+        <!-- duration -->
+        <TextView
+            android:id="@+id/duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:text="0:00"
+            android:textSize="12sp"
+            android:textAppearance="?textAppearanceOverline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seek_bar" />
+
+        <LinearLayout
+            android:id="@+id/textWrapper"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bookmark">
+
+            <!-- title -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:ellipsize="marquee"
+                android:focusable="false"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textAppearance="?textAppearanceHeadline6"
+                tools:text="Thirty Seconds to Mars " />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:gravity="center"
+                android:textAppearance="?textAppearanceCaption"
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="16sp"
+                tools:text="50 Cent" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@id/playerControls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:layout_marginEnd="72dp"
+            app:layout_constraintBottom_toTopOf="@+id/lyrics"
+            app:layout_constraintEnd_toStartOf="@+id/lyrics"
+            app:layout_constraintStart_toEndOf="@+id/favorite"
+            app:layout_constraintTop_toBottomOf="@+id/textWrapper">
+
+            <ImageButton
+                android:id="@+id/previous"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="24dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_skip_previous"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/playPause"
+                app:layout_constraintEnd_toStartOf="@+id/playPause"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/playPause"
+                app:tint="?android:textColorPrimary" />
+
+            <ImageButton
+                android:id="@+id/playPause"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_play"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:tint="?android:textColorPrimary" />
+
+            <ImageButton
+                android:id="@+id/next"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_skip_next"
+                app:layout_constraintBottom_toBottomOf="@+id/playPause"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/playPause"
+                app:layout_constraintTop_toTopOf="@+id/playPause"
+                app:tint="?android:textColorPrimary" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/favorite"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_favorite"
+            app:layout_constraintBottom_toBottomOf="@id/playerControls"
+            app:layout_constraintStart_toStartOf="@+id/playbackSpeed"
+            app:layout_constraintTop_toTopOf="@+id/playerControls"
+            app:tint="?android:textColorPrimary" />
+
+        <ImageButton
+            android:id="@+id/more"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_more_vert"
+            app:layout_constraintBottom_toBottomOf="@+id/playerControls"
+            app:layout_constraintEnd_toEndOf="@+id/lyrics"
+            app:layout_constraintTop_toTopOf="@+id/playerControls"
+            app:tint="?android:textColorPrimary" />
+
+        <ImageButton
+            android:id="@+id/playbackSpeed"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="20dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_slow_motion"
+            app:layout_constraintBottom_toBottomOf="@+id/lyrics"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="?android:textColorPrimary" />
+
+        <ImageButton
+            android:id="@+id/shuffle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_shuffle"
+            app:layout_constraintBottom_toBottomOf="@+id/lyrics"
+            app:layout_constraintEnd_toStartOf="@+id/repeat"
+            app:layout_constraintStart_toEndOf="@+id/playbackSpeed"
+            app:tint="?android:textColorPrimary" />
+
+        <ImageButton
+            android:id="@+id/repeat"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_repeat_all"
+            app:layout_constraintBottom_toBottomOf="@+id/lyrics"
+            app:layout_constraintEnd_toStartOf="@+id/lyrics"
+            app:layout_constraintStart_toEndOf="@+id/shuffle"
+            app:tint="?android:textColorPrimary" />
+
+        <ImageButton
+            android:id="@+id/lyrics"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="8dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_lyrics"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="?android:textColorPrimary" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

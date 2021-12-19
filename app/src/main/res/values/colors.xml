@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <color name="deep_purple_200">#b39ddb</color>
+    <color name="deep_purple_500">#673ab7</color>
+    <color name="deep_purple_700">#512da8</color>
+    <color name="orange_a100">#ffd180</color>
+    <color name="orange_a200">#ffab40</color>
+
+    <color name="elevation_8_overlay">@android:color/transparent</color>
+    <color name="action_mode_background">#212121</color>
+
+    <!-- Background protection for navigation bar, varied on Q+ -->
+    <color name="immersive_sys_ui">#33000000</color>
+    <color name="nav_bar_background">@color/immersive_sys_ui</color>
+</resources>

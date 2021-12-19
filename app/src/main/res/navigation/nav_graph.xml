@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="ru.valentine.flexplayer.ui.main.MainFragment"
+        android:label="MainFragment">
+        <action
+            android:id="@+id/toAlbumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="ru.valentine.flexplayer.ui.album.detail.AlbumDetailFragment"
+        android:label="AlbumDetailFragment">
+        <argument
+            android:name="albumId"
+            app:argType="string" />
+    </fragment>
+</navigation>

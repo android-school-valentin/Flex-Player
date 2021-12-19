@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/recommendationFragment"
+        android:icon="@drawable/ic_favorite"
+        android:title="@string/label_recommendations"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/trackFragment"
+        android:icon="@drawable/ic_music_note"
+        android:title="@string/label_tracks"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/albumFragment"
+        android:icon="@drawable/ic_music_album"
+        android:title="@string/label_albums"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/savedFragment"
+        android:icon="@drawable/ic_save"
+        android:title="@string/label_saved"
+        app:showAsAction="ifRoom" />
+
+</menu>

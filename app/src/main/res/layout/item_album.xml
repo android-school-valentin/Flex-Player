@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="ru.valentine.flexplayer.service.ext.MediaItemExtKt" />
+
+        <variable
+            name="mediaItem"
+            type="android.support.v4.media.MediaBrowserCompat.MediaItem" />
+
+        <variable
+            name="clickListener"
+            type="ru.valentine.flexplayer.ui.base.MediaItemClickListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/grid_0_5"
+        android:foreground="?selectableItemBackground"
+        android:onClick="@{() -> clickListener.onClick(mediaItem)}"
+        android:textDirection="locale"
+        tools:cardBackgroundColor="?attr/albumPalettePrimaryColor">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/grid_2">
+
+            <ImageView
+                android:id="@+id/album_art"
+                image="@{mediaItem.description.iconUri}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/grid_2"
+                android:layout_marginTop="@dimen/grid_2"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{mediaItem.description.title}"
+                android:textAppearance="?textAppearanceSubtitle1"
+                app:layout_constraintBottom_toTopOf="@id/subtitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/album_art"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Title" />
+
+            <TextView
+                android:id="@+id/subtitle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/grid_0_5"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{@string/album_item_subtitle(MediaItemExtKt.getTrackCount(mediaItem))}"
+                android:textAppearance="?textAppearanceCaption"
+                app:layout_constraintEnd_toEndOf="@id/title"
+                app:layout_constraintStart_toStartOf="@id/title"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Subtitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

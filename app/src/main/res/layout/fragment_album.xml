@@ -29,7 +29,7 @@
             app:spanCount="2"
             tools:listitem="@layout/item_album" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/empty_icon"
             android:layout_width="128dp"
             android:layout_height="128dp"
@@ -44,7 +44,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/empty_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

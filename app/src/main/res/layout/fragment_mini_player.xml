@@ -1,81 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="?actionBarSize"
-    android:clickable="true"
-    android:focusable="true"
-    tools:ignore="UnusedAttribute">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
+        android:layout_height="56dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:minHeight="56dp"
         android:paddingStart="0dp"
         android:paddingEnd="8dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="16dp"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_arrow_down"
-            app:tint="?attr/colorControlNormal"
-            tools:ignore="ContentDescription" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/mini_album_art"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="@dimen/grid_2"
+            android:layout_marginTop="@dimen/grid_1"
+            android:layout_marginBottom="@dimen/grid_1"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="?shapeAppearanceMediumComponent"
+            tools:src="@tools:sample/avatars" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/miniPlayerTitle"
+            android:id="@+id/mini_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:ellipsize="marquee"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:freezesText="true"
-            android:gravity="center"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:scrollHorizontally="true"
-            android:singleLine="true"
-            android:textAppearance="@style/TextAppearance.FlexPlayer.Subtitle1"
-            android:textColor="?android:attr/textColorPrimary"
-            tools:text="@tools:sample/lorem/random" />
+            android:layout_marginStart="@dimen/grid_1"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="?textAppearanceSubtitle1"
+            app:layout_constraintEnd_toStartOf="@id/mini_play_pause"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/mini_album_art"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Title" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/actionPrevious"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:padding="6dp"
-            app:srcCompat="@drawable/ic_skip_previous"
-            app:tint="?attr/colorControlNormal" />
-
-        <FrameLayout
-            android:layout_width="wrap_content"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mini_subtitle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical">
+            android:layout_marginBottom="@dimen/grid_1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="?textAppearanceCaption"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/mini_play_pause"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/mini_title"
+            app:layout_constraintTop_toBottomOf="@id/mini_title"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="Subtitle" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/miniPlayerPlayPauseButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:scaleType="center"
-                app:srcCompat="@drawable/ic_pause"
-                app:tint="?attr/colorControlNormal"
-                tools:ignore="ContentDescription" />
-        </FrameLayout>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/actionNext"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:padding="6dp"
-            app:srcCompat="@drawable/ic_skip_next"
-            app:tint="?attr/colorControlNormal" />
-    </LinearLayout>
-
-</FrameLayout>
+        <ImageButton
+            android:id="@+id/mini_play_pause"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/grid_1"
+            android:layout_marginEnd="@dimen/grid_1"
+            android:layout_marginBottom="@dimen/grid_1"
+            android:background="?selectableItemBackgroundBorderless"
+            android:scaleType="center"
+            android:src="@drawable/ic_pause"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -25,7 +25,7 @@
         android:textDirection="locale">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/album_art"
+            android:id="@+id/mini_album_art"
             image="@{mediaItem.description.iconUri}"
             android:layout_width="56dp"
             android:layout_height="56dp"
@@ -39,8 +39,8 @@
             app:shapeAppearance="?shapeAppearanceMediumComponent"
             tools:src="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/track_title"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mini_title"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/grid_2"
@@ -49,13 +49,13 @@
             android:maxLines="@integer/song_title_max_lines"
             android:text="@{mediaItem.description.title}"
             android:textAppearance="?textAppearanceSubtitle1"
-            app:layout_constraintEnd_toStartOf="@id/overflow_icon"
-            app:layout_constraintStart_toEndOf="@id/album_art"
+            app:layout_constraintEnd_toStartOf="@id/mini_play_pause"
+            app:layout_constraintStart_toEndOf="@id/mini_album_art"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Title" />
 
-        <TextView
-            android:id="@+id/track_metadata"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mini_subtitle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/grid_0_5"
@@ -65,14 +65,14 @@
             android:text="@{@string/track_item_subtitle(mediaItem.description.subtitle, MediaItemExtKt.getDuration(mediaItem))}"
             android:textAppearance="?textAppearanceCaption"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/overflow_icon"
-            app:layout_constraintStart_toStartOf="@id/track_title"
-            app:layout_constraintTop_toBottomOf="@id/track_title"
+            app:layout_constraintEnd_toStartOf="@id/mini_play_pause"
+            app:layout_constraintStart_toStartOf="@id/mini_title"
+            app:layout_constraintTop_toBottomOf="@id/mini_title"
             app:layout_constraintVertical_bias="0"
             tools:text="Subtitle" />
 
         <ImageButton
-            android:id="@+id/overflow_icon"
+            android:id="@+id/mini_play_pause"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginTop="@dimen/grid_1_5"

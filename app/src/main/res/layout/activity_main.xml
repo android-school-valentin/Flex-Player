@@ -22,15 +22,16 @@
             android:layout_height="match_parent"
             android:elevation="8dp"
             android:orientation="vertical"
-            app:behavior_peekHeight="?actionBarSize"
+            app:behavior_peekHeight="56dp"
             app:layout_behavior="@string/bottom_sheet_behavior"
             app:shapeAppearance="@style/ShapeAppearance.FlexPlayer.BottomSheet">
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragment_mini_player"
-                android:name="ru.valentine.flexplayer.ui.player.MiniPlayerFragment"
+                android:name="ru.valentine.flexplayer.ui.player.mini.MiniPlayerFragment"
                 android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
+                android:layout_height="wrap_content"
+                android:minHeight="56dp"
                 tools:layout="@layout/fragment_mini_player" />
 
             <androidx.fragment.app.FragmentContainerView

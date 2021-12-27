@@ -17,7 +17,6 @@ import ru.valentine.flexplayer.service.browser.BrowserTree
 import ru.valentine.flexplayer.service.browser.BrowserTreeImpl
 import ru.valentine.flexplayer.service.playback.AudioExtractorsFactory
 import ru.valentine.flexplayer.service.playback.AudioRenderersFactory
-import ru.valentine.flexplayer.service.playback.NotificationBuilder
 
 val serviceModule = module {
     single { BrowserClientImpl(get()) as BrowserClient }
@@ -28,7 +27,6 @@ val serviceModule = module {
 
     single { provideExoPlayer(get()) as ExoPlayer }
 
-    single { NotificationBuilder(get(), get()) }
 }
 
 fun provideMediaSession(service: Application): MediaSessionCompat {

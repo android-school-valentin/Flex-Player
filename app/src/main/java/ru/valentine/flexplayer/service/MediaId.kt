@@ -56,29 +56,29 @@ class MalformedMediaIdException(message: String) : Exception(message)
 class MediaId
 private constructor(
 
-    /**
-     * The type of media, indicating the kind of media to be browsed.
-     */
-    val type: String,
+        /**
+         * The type of media, indicating the kind of media to be browsed.
+         */
+        val type: String,
 
-    /**
-     * The browse category.
-     * When specified, this defines a subset of media of the given [type].
-     */
-    val category: String?,
+        /**
+         * The browse category.
+         * When specified, this defines a subset of media of the given [type].
+         */
+        val category: String?,
 
-    /**
-     * The track identifier.
-     * When specified, this indicates that the media is playable.
-     * This part uniquely identifies the playable content on a given storage.
-     */
-    val track: Long?,
+        /**
+         * The track identifier.
+         * When specified, this indicates that the media is playable.
+         * This part uniquely identifies the playable content on a given storage.
+         */
+        val track: Long?,
 
-    /**
-     * This media id encoded as a String.
-     * Two media ids with the same encoded form are considered equal.
-     */
-    val encoded: String
+        /**
+         * This media id encoded as a String.
+         * Two media ids with the same encoded form are considered equal.
+         */
+        val encoded: String
 
 ) {
 
@@ -94,9 +94,9 @@ private constructor(
      * @throws MalformedMediaIdException If some of the overridden parts are invalid.
      */
     fun copy(
-        type: String = this.type,
-        category: String? = this.category,
-        track: Long? = this.track
+            type: String = this.type,
+            category: String? = this.category,
+            track: Long? = this.track
     ): MediaId = MediaId(type, category, track)
 
     override fun equals(other: Any?): Boolean = when {
@@ -207,7 +207,7 @@ private constructor(
          * @see MediaId.fromParts
          */
         operator fun invoke(type: String, category: String? = null, track: Long? = null): MediaId =
-            fromParts(type, category, track)
+                fromParts(type, category, track)
 
         /**
          * Assert that that passed [encoded] String matches the format for a media id
@@ -290,10 +290,10 @@ private constructor(
         }
 
         private fun isValidType(type: String): Boolean =
-            type.isNotEmpty() && type.all(Char::isLetter)
+                type.isNotEmpty() && type.all(Char::isLetter)
 
         private fun isValidCategory(category: String) =
-            category.isNotEmpty() && category.all(Char::isLetterOrDigit)
+                category.isNotEmpty() && category.all(Char::isLetterOrDigit)
 
         private fun isValidTrack(track: String) = track.isNotEmpty() && track.all(Char::isDigit)
 

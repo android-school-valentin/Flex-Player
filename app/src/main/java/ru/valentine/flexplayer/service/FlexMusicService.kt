@@ -33,7 +33,7 @@ import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
 
 const val NOW_PLAYING_CHANNEL_ID = "ru.valentine.flexplayer.media.NOW_PLAYING"
-const val NOW_PLAYING_NOTIFICATION_ID = 0xb339 // Arbitrary number used to identify our notification
+const val NOW_PLAYING_NOTIFICATION_ID = 0xffcdf // Arbitrary number used to identify notification
 
 class FlexMusicService : MediaBrowserServiceCompat(), CoroutineScope {
 
@@ -53,6 +53,7 @@ class FlexMusicService : MediaBrowserServiceCompat(), CoroutineScope {
 
     override fun onCreate() {
         super.onCreate()
+
         scopeJob = SupervisorJob()
 
         session.isActive = true
@@ -64,22 +65,22 @@ class FlexMusicService : MediaBrowserServiceCompat(), CoroutineScope {
         val mediaSessionConnector = MediaSessionConnector(session)
         mediaSessionConnector.setPlayer(player)
         mediaSessionConnector.setPlaybackPreparer(
-            FlexPlaybackPreparer(
-                scope = this,
-                player = player,
-                browserTree = browserTree
-            )
+                FlexPlaybackPreparer(
+                        scope = this,
+                        player = player,
+                        browserTree = browserTree
+                )
         )
         mediaSessionConnector.setQueueNavigator(FlexQueueNavigator(session = session))
 
         notificationManager = PlayerNotificationManager.createWithNotificationChannel(
-            this,
-            NOW_PLAYING_CHANNEL_ID,
-            R.string.channel_mediasession,
-            R.string.channel_mediasession_description,
-            NOW_PLAYING_NOTIFICATION_ID,
-            DescriptionAdapter(this, this, mediaController),
-            FlexNotificationListener()
+                this,
+                NOW_PLAYING_CHANNEL_ID,
+                R.string.channel_media_session,
+                R.string.channel_media_session_description,
+                NOW_PLAYING_NOTIFICATION_ID,
+                DescriptionAdapter(this, this, mediaController),
+                FlexNotificationListener()
         ).apply {
 
             setMediaSessionToken(session.sessionToken)
@@ -88,8 +89,6 @@ class FlexMusicService : MediaBrowserServiceCompat(), CoroutineScope {
 
         }
         notificationManager.setPlayer(player)
-
-        //notificationManager = NotificationManagerCompat.from(this)
 
         sessionToken = session.sessionToken
 
@@ -110,16 +109,16 @@ class FlexMusicService : MediaBrowserServiceCompat(), CoroutineScope {
     }
 
     override fun onGetRoot(
-        clientPackageName: String,
-        clientUid: Int,
-        rootHints: Bundle?
+            clientPackageName: String,
+            clientUid: Int,
+            rootHints: Bundle?
     ): BrowserRoot {
         return BrowserRoot("root", null)
     }
 
     override fun onLoadChildren(
-        parentId: String,
-        result: Result<MutableList<MediaBrowserCompat.MediaItem>>
+            parentId: String,
+            result: Result<MutableList<MediaBrowserCompat.MediaItem>>
     ) {
         result.detach()
 
@@ -143,9 +142,9 @@ class FlexMusicService : MediaBrowserServiceCompat(), CoroutineScope {
 
                 } catch (malformedId: MalformedMediaIdException) {
                     Timber.i(
-                        malformedId,
-                        "Attempt to load item from a malformed media id: %s",
-                        itemId
+                            malformedId,
+                            "Attempt to load item from a malformed media id: %s",
+                            itemId
                     )
                     result.sendResult(null)
                 }
@@ -155,28 +154,28 @@ class FlexMusicService : MediaBrowserServiceCompat(), CoroutineScope {
 
 
     private fun MediaContent.toItem(
-        builder: MediaDescriptionCompat.Builder = MediaDescriptionCompat.Builder()
+            builder: MediaDescriptionCompat.Builder = MediaDescriptionCompat.Builder()
     ): MediaBrowserCompat.MediaItem {
         builder
-            .setMediaId(id.encoded)
-            .setTitle(title)
-            .setIconUri(iconUri)
+                .setMediaId(id.encoded)
+                .setTitle(title)
+                .setIconUri(iconUri)
 
         when (this) {
             is MediaCategory -> {
                 builder
-                    .setSubtitle(subtitle)
-                    .setExtras(Bundle().apply {
-                        putInt(EXTRA_NUMBER_OF_TRACKS, count)
-                    })
+                        .setSubtitle(subtitle)
+                        .setExtras(Bundle().apply {
+                            putInt(EXTRA_NUMBER_OF_TRACKS, count)
+                        })
             }
 
             is AudioTrack -> {
                 builder
-                    .setSubtitle(artist)
-                    .setExtras(Bundle(1).apply {
-                        putLong(EXTRA_DURATION, duration)
-                    })
+                        .setSubtitle(artist)
+                        .setExtras(Bundle(1).apply {
+                            putLong(EXTRA_DURATION, duration)
+                        })
             }
         }
 
@@ -192,16 +191,16 @@ class FlexMusicService : MediaBrowserServiceCompat(), CoroutineScope {
     }
 
     private inner class FlexNotificationListener :
-        PlayerNotificationManager.NotificationListener {
+            PlayerNotificationManager.NotificationListener {
         override fun onNotificationPosted(
-            notificationId: Int,
-            notification: Notification,
-            ongoing: Boolean
+                notificationId: Int,
+                notification: Notification,
+                ongoing: Boolean
         ) {
             if (ongoing && !isForegroundService) {
                 ContextCompat.startForegroundService(
-                    applicationContext,
-                    Intent(applicationContext, this@FlexMusicService.javaClass)
+                        applicationContext,
+                        Intent(applicationContext, this@FlexMusicService.javaClass)
                 )
 
                 startForeground(notificationId, notification)

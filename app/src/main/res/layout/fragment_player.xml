@@ -36,35 +36,35 @@
             app:layout_constraintTop_toBottomOf="@id/album_art" />
 
         <!-- bookmark -->
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/bookmark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:clickable="false"
             android:focusable="false"
-            android:text="0:00"
+            tools:text="0:00"
             android:textAppearance="?textAppearanceOverline"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seek_bar" />
 
         <!-- duration -->
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:clickable="false"
             android:focusable="false"
-            android:text="0:00"
+            tools:text="0:00"
             android:textSize="12sp"
             android:textAppearance="?textAppearanceOverline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seek_bar" />
 
         <LinearLayout
-            android:id="@+id/textWrapper"
+            android:id="@+id/text_wrapper"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -104,15 +104,15 @@
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@id/playerControls"
+            android:id="@id/player_controls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="72dp"
             android:layout_marginEnd="72dp"
             app:layout_constraintBottom_toTopOf="@+id/lyrics"
             app:layout_constraintEnd_toStartOf="@+id/lyrics"
-            app:layout_constraintStart_toEndOf="@+id/favorite"
-            app:layout_constraintTop_toBottomOf="@+id/textWrapper">
+            app:layout_constraintStart_toEndOf="@+id/add"
+            app:layout_constraintTop_toBottomOf="@+id/text_wrapper">
 
             <ImageButton
                 android:id="@+id/previous"
@@ -125,14 +125,14 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_skip_previous"
                 android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/playPause"
-                app:layout_constraintEnd_toStartOf="@+id/playPause"
+                app:layout_constraintBottom_toBottomOf="@+id/play_pause"
+                app:layout_constraintEnd_toStartOf="@+id/play_pause"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/playPause"
+                app:layout_constraintTop_toTopOf="@+id/play_pause"
                 app:tint="?android:textColorPrimary" />
 
             <ImageButton
-                android:id="@+id/playPause"
+                android:id="@+id/play_pause"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="?selectableItemBackgroundBorderless"
@@ -153,23 +153,23 @@
                 android:background="?selectableItemBackgroundBorderless"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_skip_next"
-                app:layout_constraintBottom_toBottomOf="@+id/playPause"
+                app:layout_constraintBottom_toBottomOf="@+id/play_pause"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/playPause"
-                app:layout_constraintTop_toTopOf="@+id/playPause"
+                app:layout_constraintStart_toEndOf="@+id/play_pause"
+                app:layout_constraintTop_toTopOf="@+id/play_pause"
                 app:tint="?android:textColorPrimary" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageButton
-            android:id="@+id/favorite"
+            android:id="@+id/add"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_favorite"
-            app:layout_constraintBottom_toBottomOf="@id/playerControls"
+            android:src="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="@id/player_controls"
             app:layout_constraintStart_toStartOf="@+id/playbackSpeed"
-            app:layout_constraintTop_toTopOf="@+id/playerControls"
+            app:layout_constraintTop_toTopOf="@+id/player_controls"
             app:tint="?android:textColorPrimary" />
 
         <ImageButton
@@ -178,9 +178,9 @@
             android:layout_height="48dp"
             android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/ic_more_vert"
-            app:layout_constraintBottom_toBottomOf="@+id/playerControls"
+            app:layout_constraintBottom_toBottomOf="@+id/player_controls"
             app:layout_constraintEnd_toEndOf="@+id/lyrics"
-            app:layout_constraintTop_toTopOf="@+id/playerControls"
+            app:layout_constraintTop_toTopOf="@+id/player_controls"
             app:tint="?android:textColorPrimary" />
 
         <ImageButton
@@ -199,7 +199,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_shuffle"
+            android:src="@drawable/shuffle_level"
             app:layout_constraintBottom_toBottomOf="@+id/lyrics"
             app:layout_constraintEnd_toStartOf="@+id/repeat"
             app:layout_constraintStart_toEndOf="@+id/playbackSpeed"
@@ -210,7 +210,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_repeat_all"
+            android:src="@drawable/repeat_level"
             app:layout_constraintBottom_toBottomOf="@+id/lyrics"
             app:layout_constraintEnd_toStartOf="@+id/lyrics"
             app:layout_constraintStart_toEndOf="@+id/shuffle"

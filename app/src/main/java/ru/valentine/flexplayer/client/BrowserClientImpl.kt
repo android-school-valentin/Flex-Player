@@ -138,18 +138,18 @@ class BrowserClientImpl constructor(
     override suspend fun setShuffleModeEnabled(enabled: Boolean) {
         val controller = deferredController.await()
         controller.transportControls.setShuffleMode(
-                when {
-                    enabled -> PlaybackStateCompat.SHUFFLE_MODE_ALL
-                    else -> PlaybackStateCompat.SHUFFLE_MODE_NONE
-                }
+            when {
+                enabled -> PlaybackStateCompat.SHUFFLE_MODE_ALL
+                else -> PlaybackStateCompat.SHUFFLE_MODE_NONE
+            }
         )
     }
 
     override suspend fun setRepeatMode(@PlaybackStateCompat.RepeatMode repeatMode: Int) {
         if (
-                repeatMode == PlaybackStateCompat.REPEAT_MODE_NONE ||
-                repeatMode == PlaybackStateCompat.REPEAT_MODE_ONE ||
-                repeatMode == PlaybackStateCompat.REPEAT_MODE_ALL
+            repeatMode == PlaybackStateCompat.REPEAT_MODE_NONE ||
+            repeatMode == PlaybackStateCompat.REPEAT_MODE_ONE ||
+            repeatMode == PlaybackStateCompat.REPEAT_MODE_ALL
         ) {
             val controller = deferredController.await()
             controller.transportControls.setRepeatMode(repeatMode)

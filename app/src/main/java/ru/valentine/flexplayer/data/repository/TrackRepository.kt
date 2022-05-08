@@ -2,7 +2,7 @@ package ru.valentine.flexplayer.data.repository
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import ru.valen.flexplayer.data.api.vkapi.response.toTrack
+import ru.valentine.flexplayer.data.vk.toTrack
 import ru.valentine.flexplayer.data.domain.Track
 import ru.valentine.flexplayer.data.vk.VkService
 

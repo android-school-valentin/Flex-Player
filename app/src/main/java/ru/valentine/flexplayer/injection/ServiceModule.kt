@@ -1,10 +1,13 @@
 package ru.valentine.flexplayer.injection
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.app.PendingIntent
 import android.content.Context
+import android.os.Build
 import android.support.v4.media.RatingCompat
 import android.support.v4.media.session.MediaSessionCompat
+import androidx.annotation.RequiresApi
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -31,11 +34,25 @@ val serviceModule = module {
 
 fun provideMediaSession(service: Application): MediaSessionCompat {
     val sessionActivityPendingIntent =
-            service.packageManager.getLaunchIntentForPackage(service.packageName)
-                    ?.let { sessionIntent ->
-                        sessionIntent.action = "flexplayer.NO_ACTION"
-                        PendingIntent.getActivity(service, 0, sessionIntent, 0)
-                    }
+        service.packageManager.getLaunchIntentForPackage(service.packageName)
+            ?.let { sessionIntent ->
+                sessionIntent.action = "flexplayer.NO_ACTION"
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    PendingIntent.getActivity(
+                        service,
+                        0,
+                        sessionIntent,
+                        PendingIntent.FLAG_IMMUTABLE
+                    )
+                } else {
+                    PendingIntent.getActivity(
+                        service,
+                        0,
+                        sessionIntent,
+                       0
+                    )
+                }
+            }
 
     return MediaSessionCompat(service, "MusicService").also {
         it.setSessionActivity(sessionActivityPendingIntent)
@@ -43,20 +60,22 @@ fun provideMediaSession(service: Application): MediaSessionCompat {
     }
 }
 
+
+
 fun provideExoPlayer(context: Context): ExoPlayer {
     val musicAttributes = AudioAttributes.Builder()
-            .setContentType(C.CONTENT_TYPE_MUSIC)
-            .setUsage(C.USAGE_MEDIA)
-            .build()
+        .setContentType(C.CONTENT_TYPE_MUSIC)
+        .setUsage(C.USAGE_MEDIA)
+        .build()
 
     val player = SimpleExoPlayer.Builder(
-            context,
-            AudioRenderersFactory(context),
-            AudioExtractorsFactory()
+        context,
+        AudioRenderersFactory(context),
+        AudioExtractorsFactory()
     )
-            .setAudioAttributes(musicAttributes, true)
-            .setHandleAudioBecomingNoisy(true)
-            .build()
+        .setAudioAttributes(musicAttributes, true)
+        .setHandleAudioBecomingNoisy(true)
+        .build()
 
     player.addAnalyticsListener(EventLogger(null))
     player.setThrowsWhenUsingWrongThread(true)

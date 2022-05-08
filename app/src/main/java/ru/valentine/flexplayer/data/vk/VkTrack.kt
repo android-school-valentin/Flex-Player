@@ -1,7 +1,8 @@
-package ru.valen.flexplayer.data.api.vkapi.response
+package ru.valentine.flexplayer.data.vk
 
 import com.google.gson.annotations.SerializedName
 import ru.valentine.flexplayer.data.domain.Track
+import timber.log.Timber
 
 data class VkAudioItem(
     @SerializedName("access_key")
@@ -118,6 +119,7 @@ data class VkAudioItem(
 }
 
 fun VkAudioItem.toTrack(): Track {
+    Timber.d("Cum $url")
     return Track(
         id,
         title,

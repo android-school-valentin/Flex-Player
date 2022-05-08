@@ -20,7 +20,6 @@ import timber.log.Timber
 class MainViewModel(private val browserClient: BrowserClient) : ViewModel() {
 
     init {
-        Timber.d("MAIN VIEW MODEL CREATED")
         browserClient.connect()
     }
 
@@ -33,10 +32,6 @@ class MainViewModel(private val browserClient: BrowserClient) : ViewModel() {
         childrenOf(MediaId.ALL_TRACKS)
     val albums: LiveData<LoadRequest<List<MediaBrowserCompat.MediaItem>>> =
         childrenOf(MediaId.ALL_ALBUMS)
-    val saved: LiveData<LoadRequest<List<MediaBrowserCompat.MediaItem>>> =
-        childrenOf(MediaId.ALL_SAVED)
-    val recommendations: LiveData<LoadRequest<List<MediaBrowserCompat.MediaItem>>> =
-        childrenOf(MediaId.ALL_RECOMMENDATIONS)
 
     private fun childrenOf(parentId: MediaId) = browserClient.getChildren(parentId)
         .loadState()

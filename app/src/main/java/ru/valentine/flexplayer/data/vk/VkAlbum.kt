@@ -1,7 +1,6 @@
 package ru.valentine.flexplayer.data.vk
 
 import com.google.gson.annotations.SerializedName
-import ru.valen.flexplayer.data.api.vkapi.response.VkAudioItem
 import ru.valentine.flexplayer.data.domain.Album
 
 data class VkAlbum(

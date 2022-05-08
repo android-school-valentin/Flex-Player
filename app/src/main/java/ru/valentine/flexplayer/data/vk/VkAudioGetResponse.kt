@@ -2,7 +2,6 @@ package ru.valentine.flexplayer.data.vk
 
 
 import com.google.gson.annotations.SerializedName
-import ru.valen.flexplayer.data.api.vkapi.response.VkAudioItem
 
 data class VkAudioGetResponse(
     @SerializedName("response")

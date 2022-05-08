@@ -58,29 +58,29 @@ class MainFragment : Fragment() {
 
         private val context = fragment.requireContext()
 
-        override fun getItemCount(): Int = 4
+        override fun getItemCount(): Int = 2
 
         override fun createFragment(position: Int): Fragment = when (position) {
             0 -> TrackFragment()
             1 -> AlbumFragment()
-            2 -> SavedFragment()
-            3 -> RecommendationFragment()
+            //2 -> SavedFragment()
+            //3 -> RecommendationFragment()
             else -> throw IllegalStateException("No fragment for this position")
         }
 
         fun getTitle(position: Int): String? = when (position) {
             0 -> context.getString(R.string.label_tracks)
             1 -> context.getString(R.string.label_albums)
-            2 -> context.getString(R.string.label_saved)
-            3 -> context.getString(R.string.label_recommendations)
+            //2 -> context.getString(R.string.label_saved)
+            //3 -> context.getString(R.string.label_recommendations)
             else -> null
         }
 
         fun getIcon(position: Int): Drawable? = when (position) {
             0 -> ContextCompat.getDrawable(context, R.drawable.ic_music_note)
             1 -> ContextCompat.getDrawable(context, R.drawable.ic_music_album)
-            2 -> ContextCompat.getDrawable(context, R.drawable.ic_save)
-            3 -> ContextCompat.getDrawable(context, R.drawable.ic_favorite)
+            //2 -> ContextCompat.getDrawable(context, R.drawable.ic_save)
+            //3 -> ContextCompat.getDrawable(context, R.drawable.ic_favorite)
             else -> null
         }
 

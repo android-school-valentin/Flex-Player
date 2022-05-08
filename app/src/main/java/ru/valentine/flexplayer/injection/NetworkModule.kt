@@ -7,6 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.valentine.flexplayer.data.vk.VkService
 import ru.valentine.flexplayer.util.HeaderInterceptor
+import ru.valentine.flexplayer.util.retrofit.ResultCallAdapterFactory
 import java.util.concurrent.TimeUnit
 
 val networkModule = module {
@@ -26,6 +27,7 @@ private fun provideRetrofit(client: OkHttpClient): Retrofit {
     return Retrofit.Builder()
         .baseUrl("https://api.vk.com/method/")
         .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(ResultCallAdapterFactory())
         .client(client)
         .build()
 }
